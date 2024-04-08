@@ -38,7 +38,6 @@ def getNegatives(myList):
         test = x
         test = float(test)
         if test < 0:
-            print(test)
             negatives.append(test)
     return negatives
 
@@ -48,7 +47,10 @@ def getIntersection(list1,list2):
     # return a sorted list of numbers that is in both lists
     # the intersection of the 2 number sets
     common = []
-
+    for x in list1:
+        if x in list2:
+            common.append(x)
+    common.sort
     return common
 
 def getUnion(list1,list2):
@@ -57,7 +59,14 @@ def getUnion(list1,list2):
     # return a sorted list of numbers that is in either of the lists
     # duplicate values will be ignored
     union = []
-
+    for x in list1:
+        union.append(x)
+    for x in list2:
+        if x in union:
+            continue
+        else:
+            union.append(x)
+    union.sort()
     return union   
 
 def getMerge(list1,list2):
@@ -66,7 +75,13 @@ def getMerge(list1,list2):
     # add the elements of list2 into list1
     # if the list2 element is in list1, add it at the position where it occurs in list1
     # if the list2 element is not in list1, add it to the end
-
+    for x in list2:
+        if x in list1:
+            check = list1.index(x)
+            check = int(check)
+            list1.insert(check, x)
+        else:
+            list1.append(x)
     return list1
 
 
@@ -79,9 +94,8 @@ def main():
         assert getIntegers([3,4,1.2,1.3,5]) == [3,4,5]
         assert getFactor(range(10),12) == [1,2,3,4,6]
         assert getNegatives([-3,-1,0,1,4]) == [-3,-1]
-        print("all three of these work")
-        assert getUnion(easy1,easy2) == [-6, -4, -2, 0.1, 2, 4, 5, 6, 8, 10, 15]
         assert getIntersection(easy1,easy2) == [2,4,6]
+        assert getUnion(easy1,easy2) == [-6, -4, -2, 0.1, 2, 4, 5, 6, 8, 10, 15]
         assert getMerge(easy1,easy2) == [5,10,15,2,2,4,4,6,6,8,-2,-4,-6,0.1]
         print("All assertions passed")
     except:
