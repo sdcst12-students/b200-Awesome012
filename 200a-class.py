@@ -36,7 +36,6 @@ class cool2:
             cool = self.numbers2 % test
             if self.numbers2 % test == 0:
                 factors.append(test)
-        print(factors)
         return factors
 
 class negative:
@@ -126,7 +125,6 @@ def main():
     try:
         assert try1.getIntegers() == [3,4,5]
         assert try2.getFactor() == [1,2,3,4,6]
-        print("these 2 worked")
         assert try3.getNegatives() == [-3,-1]
         assert try4.getIntersection() == [2,4,6]
         assert try5.getUnion() == [-6, -4, -2, 0.1, 2, 4, 5, 6, 8, 10, 15]
